@@ -3,50 +3,63 @@ class Animal
 {
     private string $animalArt;
     private string $name;
-    private int $happinessLevel = 6;
+    private int $happinessLevel = 40;
     private string $foodTypePreference;
-    private int $foodReserves = 10;
-    private string $animalState = 'Resting';
-    public function __construct(string $name, string $foodTypePreference, string $animalArt = '')
-    {
-        $this -> name = $name;
-        $this -> foodTypePreference = $foodTypePreference;
-        $this -> animalArt = $animalArt;
+    private int $foodReserves = 40;
+    private string $animalState = "Resting";
+    public function __construct(
+        string $name,
+        string $foodTypePreference,
+        string $animalArt = ""
+    ) {
+        $this->name = $name;
+        $this->foodTypePreference = $foodTypePreference;
+        $this->animalArt = $animalArt;
     }
-    private function setHappinessLevel(int $happinessLevel): void
+    public function increaseHappinessLevel(int $happinessLevel): void
     {
-        $this -> happinessLevel = $happinessLevel;
+        if ($this->happinessLevel < 100 || $happinessLevel < 0) {
+            $this->happinessLevel += $happinessLevel;
+            if ($this->happinessLevel < 0) {
+                $this->happinessLevel = 0;
+            }
+        }
     }
-    private function setFoodReserves(string $foodReserves): void
+    public function addFoodReserves(int $foodReserves): void
     {
-        $this -> foodReserves = $foodReserves;
+        if ($this->foodReserves < 100 || $foodReserves < 0) {
+            $this->foodReserves += $foodReserves;
+            if ($this->foodReserves < 0) {
+                $this->foodReserves = 0;
+            }
+        }
     }
-    private function setAnimalState(string $animalState): void
+    public function setAnimalState(string $animalState): void
     {
-        $this -> animalState = $animalState;
+        $this->animalState = $animalState;
     }
     public function getAnimalArt(): string
     {
-        return $this -> animalArt;
+        return $this->animalArt;
     }
     public function getName(): string
     {
-        return $this -> name;
+        return $this->name;
     }
     public function getHappinessLevel(): int
     {
-       return $this -> happinessLevel;
+        return $this->happinessLevel;
     }
     public function getFoodTypePreference(): string
     {
-        return $this -> foodTypePreference;
+        return $this->foodTypePreference;
     }
     public function getFoodReserves(): int
     {
-        return $this -> foodReserves;
+        return $this->foodReserves;
     }
     public function getAnimalState(): string
     {
-        return $this -> animalState;
+        return $this->animalState;
     }
 }
